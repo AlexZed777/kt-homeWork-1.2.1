@@ -1,14 +1,15 @@
 
 val scan = java.util.Scanner(System.`in`)
 fun main () {
-    println("Введите сумму перевода: ")
+    while (true) {
+        println("Введите сумму перевода: ")
 
-    val amount = scan.nextInt()
+        val amount = scan.nextInt() * 100
+        val minCommission = 3500
 
-    val commission = if (amount*100 <= 466_600){
-        35
-    } else {
-        amount * 100 * 0.0075 / 100
+        var commission: Double
+        if ((amount * 0.0075) < minCommission) commission = minCommission.toDouble() else commission = ((amount * 0.0075))
+        val result = commission/100
+        println("Коммиссия составит: $result рублей")
     }
-    println("Коммиссия составит: $commission")
 }
